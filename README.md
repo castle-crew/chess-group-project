@@ -1,10 +1,10 @@
 Click [here](https://castle-crew-chess.herokuapp.com/) to visit Castle Crew Chess
 
-#Castle Crew Chess
+# Castle Crew Chess
 
-###Overview
+### Overview
 
-###Code Structure
+### Code Structure
 
 **Models**:
 
