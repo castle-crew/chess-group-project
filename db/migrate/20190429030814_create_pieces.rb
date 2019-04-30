@@ -7,6 +7,7 @@ class CreatePieces < ActiveRecord::Migration[5.2]
       t.integer :x_space
       t.integer :y_space
       t.boolean :status
+      t.integer :game_id
 
       t.timestamps
     end
