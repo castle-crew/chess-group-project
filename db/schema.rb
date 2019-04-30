@@ -10,21 +10,39 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-
-ActiveRecord::Schema.define(version: 2019_04_27_175050) do
-
+ActiveRecord::Schema.define(version: 2019_04_29_030844) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
-create_table "users", force: :cascade do |t|
-    t.string "email", default: "", null: false
-    t.string "encrypted_password", default: "", null: false
-    t.string "reset_password_token"
-    t.datetime "reset_password_sent_at"
-    t.datetime "remember_created_at"
+  create_table "games", force: :cascade do |t|
+    t.integer "game_id"
+    t.integer "white_player"
+    t.integer "black_player"
+    t.integer "winner"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["email"], name: "index_users_on_email", unique: true
-    t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
+
+  create_table "pieces", force: :cascade do |t|
+    t.integer "piece_id"
+    t.string "type"
+    t.string "color"
+    t.integer "x_space"
+    t.integer "y_space"
+    t.boolean "status"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "players", force: :cascade do |t|
+    t.integer "user_id"
+    t.string "name"
+    t.integer "wins"
+    t.integer "loses"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+end
+
