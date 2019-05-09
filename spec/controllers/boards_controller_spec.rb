@@ -7,4 +7,11 @@ RSpec.describe BoardsController, type: :controller do
       expect(response).to have_http:status(:success)
     end
   end
+
+  describe "boards#create action" do
+    it "should successfully create a new chess board for a game" do
+      post :create, params: {board: { board_id: '1' } }
+      expect(response).to redirect_to game_path
+    end
+  end
 end
