@@ -3,5 +3,3 @@ rvm:
   -2.5
   -jruby
 
-services:
-  - postgresql
