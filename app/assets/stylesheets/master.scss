@@ -1,1 +1,59 @@
 @import "bootstrap";
+
+.clear {
+  clear: both;
+}
+
+.topline {
+  height: 200px;
+}
+
+.black {
+  float: left;
+  position: relative;
+  width: 49px;
+  height: 49px;
+  color: white;
+  background-color: black;
+}
+
+.white {
+  float: left;
+  position: relative;
+  width: 49px;
+  height: 49px;
+}
+
+.rank-8 {
+  border-top: 1px solid black;
+  border-left: 1px solid black;
+}
+
+.rank-7 {
+  border-right: 1px solid black;
+}
+
+.rank-6 {
+  border-left: 1px solid black;
+}
+
+.rank-5 {
+  border-right: 1px solid black;
+}
+
+.rank-4 {
+  border-left: 1px solid black;
+}
+
+.rank-3 {
+  border-right: 1px solid black;
+}
+
+.rank-2 {
+  border-left: 1px solid black;
+}
+
+.rank-1 {
+  border-bottom: 1px solid black;
+  border-right: 1px solid black;
+}
