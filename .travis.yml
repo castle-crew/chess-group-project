@@ -3,7 +3,5 @@ rvm:
   -2.5
   -jruby
 
-deploy:
-  provider: heroku
-  api_key:
-    secure: 
+services:
+  - postgresql
