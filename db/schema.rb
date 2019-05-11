@@ -24,12 +24,6 @@ ActiveRecord::Schema.define(version: 2019_05_09_040321) do
     t.datetime "updated_at", null: false
   end
 
-  create_table "chess_boards", force: :cascade do |t|
-    t.integer "game_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
   create_table "games", force: :cascade do |t|
     t.integer "game_id"
     t.integer "white_player"
