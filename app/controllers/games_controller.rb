@@ -6,15 +6,14 @@ class GamesController < ApplicationController
   end
 
   def create
-    user = FactoryBot.create(:user)
-      sign_in user
-
-    game = current_user.games.create(game_params)
+    @game.create(game_params)
+    redirect_to game_path(:game_id)
   end
 
   def show
-    @game = Game.find(game_params)  #params[:id]
-    if user_signed_in?
+    @game = Game.find(params[:game_id])
+
+    if @user.valid?
       redirect_to game_path
     else
       redirect_to new_user_session_path

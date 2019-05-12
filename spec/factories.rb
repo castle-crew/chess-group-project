@@ -12,5 +12,9 @@ FactoryBot.define do
       "#{n}"
     end
   end
+
+  factory :player do
+  end
+
 end
 
