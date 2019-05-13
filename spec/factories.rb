@@ -10,5 +10,15 @@ FactoryBot.define do
     password {"secretPassword"}
     password_confirmation {"secretPassword" }
   end
+
+  factory :game do
+    sequence :game_id do |n|
+      "#{n}"
+    end
+  end
+
+  factory :player do
+  end
+
 end
 
