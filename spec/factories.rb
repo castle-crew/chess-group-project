@@ -1,4 +1,5 @@
 FactoryBot.define do
+  
   factory :board do
     
   end
@@ -20,5 +21,16 @@ FactoryBot.define do
   factory :player do
   end
 
+  factory :piece do
+    sequence :piece_id do |n|
+      "#{n}"
+    end
+  end
+
+  factory :king do
+    trait :x_space do
+      4
+    end
+  end
 end
 

@@ -3,6 +3,8 @@ class GamesController < ApplicationController
 
   def new
     @game = Game.new
+    after_create :populate_board!
+    # after_create :populate_board!
   end
 
   def create
@@ -24,7 +26,7 @@ class GamesController < ApplicationController
   private
 
   def game_params
-    params.require(:game).permit(:game_id)
+    params.require(:game).permit(:game_id, :white_player, :black_player, :winner)
   end
 end
 

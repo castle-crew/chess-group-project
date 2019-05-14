@@ -6,7 +6,25 @@ RSpec.describe GamesController, type: :controller do
 
     it "should successfully start a new game" do
       @game = FactoryBot.create(:game)
-      expect(response).to have_http_status(:success)
+      expect(@game).to have_attributes(:winner => nil)
+    end
+
+    it "should successfully place pieces on board" do
+      @game = FactoryBot.create(:game)
+      # piece = FactoryBot.create(:piece)
+
+      pieces = @game.piece.count
+
+      expect(pieces).to_eq (32)
+
+
+
+      # expect(@game).to have_attributes(:winner => nil)
+
+      # white_king = FactoryBot.create(:king)
+      
+      # expect(white_king).to have_attributes(:color => true)
+      #expect(black_king).to have_color(:false)
     end
   end
 
