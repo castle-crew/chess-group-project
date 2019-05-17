@@ -13,10 +13,21 @@ class Piece < ApplicationRecord
 def move_to!(x, y)
   return false unless valid_move?(x, y)
   if space_occupied?(x, y)
-    return false unless is_opponent?(space_occupied?)
-    capture!(space_occupied?)
-    update_attributes(x_position: x, y_position: y)
+    return false unless opposing_piece_at_location?(x, y)
+    capture!(x, y)
   end
+end
+  
+def piece_at_location(x, y)
+  game.pieces.find_by(x_position: x, y_position: y)
+end
+
+def opposing_piece_at_location?(x, y)
+  space_occupied(x, y) && (piece_at_location(x, y).color != color)
+end
+  
+def capture!(piece_at_location)
+  update_attributes(x_position: nil, y_position: nil)
 end
 
 
