@@ -10,4 +10,15 @@ class Piece < ApplicationRecord
   scope :rooks, -> { where(type: 'Rook') }
   scope :pawns, -> { where(type: 'Pawn') }
 
+def move_to!(x, y)
+  return false unless valid_move(x, y)
+  if space_occupied?(x, y)
+    return false unless is_opponent?(space_occupied?)
+    capture!(space_occupied?)
+    update_attributes(x_position: x, y_position: y)
+  end
+end
+
+
+
 end
