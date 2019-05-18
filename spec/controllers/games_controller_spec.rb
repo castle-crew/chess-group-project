@@ -11,8 +11,9 @@ RSpec.describe GamesController, type: :controller do
 
     it "should successfully place pieces on board" do
       @game = FactoryBot.create(:game)
-      # piece = FactoryBot.create(:piece)
+      #piece = FactoryBot.create(:piece)
 
+      get :new
       pieces = @game.piece.count
 
       expect(pieces).to_eq (32)
