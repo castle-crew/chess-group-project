@@ -3,20 +3,20 @@ class GamesController < ApplicationController
 
   def new
     @game = Game.new
-    after_create :populate_board!
+    
   
   end
 
   def create
     @game.create(game_params)
-    redirect_to game_path(:id) #changed from game_id because I agreed with Donny's thoughts on the row number issue
+    redirect_to game_path(:game_id) 
   end
 
   def show
-    @game = Game.find(params[:id, :white_player, :black_player, :winner])
+    @game = Game.find_by_id(params[:id])
 
-    if @user.valid?
-      redirect_to game_path
+    if user_signed_in?
+      redirect_to game_path(@game)
     else
       redirect_to new_user_session_path
     end
@@ -26,7 +26,7 @@ class GamesController < ApplicationController
   private
 
   def game_params
-    params.require(:game).permit(:game_id, :white_player, :black_player, :winner)
+    params.require(:game).permit(:id, :white_player, :black_player, :winner)
   end
 end
 

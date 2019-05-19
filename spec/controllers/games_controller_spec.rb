@@ -1,7 +1,7 @@
 require 'rails_helper'
 
 RSpec.describe GamesController, type: :controller do
-  
+
   describe "games#new action" do
 
     it "should successfully start a new game" do
@@ -9,24 +9,6 @@ RSpec.describe GamesController, type: :controller do
       expect(@game).to have_attributes(:winner => nil)
     end
 
-    it "should successfully place pieces on board" do
-      @game = FactoryBot.create(:game)
-      #piece = FactoryBot.create(:piece)
-
-      get :new
-      pieces = @game.piece.count
-
-      expect(pieces).to_eq (32)
-
-
-
-      # expect(@game).to have_attributes(:winner => nil)
-
-      # white_king = FactoryBot.create(:king)
-      
-      # expect(white_king).to have_attributes(:color => true)
-      #expect(black_king).to have_color(:false)
-    end
   end
 
   describe "games#create action" do
@@ -51,9 +33,19 @@ RSpec.describe GamesController, type: :controller do
 
     it "should show the game board" do
       @game = FactoryBot.create(:game)
+      @user = FactoryBot.create(:user)
+      sign_in @user
+      get :show, params: { id: @game.id } 
 
-      get :show, params: { id: @game.game_id }
+      expect(response).to redirect_to game_path(@game)
+    end
 
+    it "should have pieces populated on the board" do
+      @game = FactoryBot.create(:game)
+      
+      pieces = @game.pieces.count
+
+      expect(pieces).to eq(32)
     end
   end
 end

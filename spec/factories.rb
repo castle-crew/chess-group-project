@@ -1,7 +1,6 @@
 FactoryBot.define do
   
   factory :board do
-    
   end
 
   factory :user do
@@ -22,15 +21,24 @@ FactoryBot.define do
   end
 
   factory :piece do
-    sequence :piece_id do |n|
-      "#{n}"
-    end
   end
 
-  factory :king do
-    trait :x_space do
-      4
-    end
+  factory :King do
+  end
+
+  factory :Queen do
+  end
+
+  factory :Rook do
+  end
+
+  factory :Bishop do
+  end
+
+  factory :Pawn do
+  end
+
+  factory :Knight do
   end
 end
 
