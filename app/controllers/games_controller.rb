@@ -11,7 +11,7 @@ class GamesController < ApplicationController
   end
 
   def show
-    @game = Game.find(params[:game_id])
+    @game = Game.find(params[:id])
 
     if @user.valid?
      redirect_to game_path
