@@ -1,5 +1,6 @@
 class Piece < ApplicationRecord
-
+  belongs_to :game
+  
   def self.types
     %w(King Knight Pawn Queen Rook)
   end
