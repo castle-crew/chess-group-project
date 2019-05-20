@@ -73,3 +73,4 @@ end
 
 gem 'devise'
 gem 'rubocop', require: false
+gem 'rubocop-performance'
