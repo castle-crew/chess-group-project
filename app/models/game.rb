@@ -4,7 +4,7 @@ class Game < ApplicationRecord
  has_many :pieces
 
   scope :available, -> { where('(white_player IS NULL AND black_player IS NOT NULL) OR (black_player IS NULL AND white_player IS NOT NULL)') }
-after_create :populate_board!
+  after_create :populate_board!
 
  def populate_board!
    # black pieces
