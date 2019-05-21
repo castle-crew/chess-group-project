@@ -1,6 +1,6 @@
 FactoryBot.define do
+  
   factory :board do
-    
   end
 
   factory :user do
@@ -20,5 +20,25 @@ FactoryBot.define do
   factory :player do
   end
 
+  factory :piece do
+  end
+
+  factory :King do
+  end
+
+  factory :Queen do
+  end
+
+  factory :Rook do
+  end
+
+  factory :Bishop do
+  end
+
+  factory :Pawn do
+  end
+
+  factory :Knight do
+  end
 end
 

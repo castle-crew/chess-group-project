@@ -3,18 +3,20 @@ class GamesController < ApplicationController
 
   def new
     @game = Game.new
+    
+  
   end
 
   def create
     @game.create(game_params)
-    redirect_to game_path(:game_id)
+    redirect_to game_path(:game_id) 
   end
 
   def show
-    @game = Game.find(params[:game_id])
+    @game = Game.find_by_id(params[:id])
 
-    if @user.valid?
-      redirect_to game_path
+    if user_signed_in?
+      redirect_to game_path(@game)
     else
       redirect_to new_user_session_path
     end
@@ -24,7 +26,7 @@ class GamesController < ApplicationController
   private
 
   def game_params
-    params.require(:game).permit(:game_id)
+    params.require(:game).permit(:id, :white_player, :black_player, :winner)
   end
 end
 
