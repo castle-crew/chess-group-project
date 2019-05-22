@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>Chess</title>
+    <title> Castle Crew Chess </title>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
 
@@ -10,12 +10,28 @@
   </head>
 
   <body>
-   <% if notice.present? %>
-  <p class="alert alert-info"><%= notice %></p>
-<% end %>
-<% if alert.present? %>
-  <p class="alert alert-danger"><%= alert %></p>
-<% end %>
-    <%= yield %>
+      <div class="top-nav">
+        <div class="col-10 offset-1 col-sm-8 offseet-sm-2 col-md-6 offset-md-3">
+          <div class="add float-right">
+            <% if current_user %>
+              You're signed in as <%= current_user.email %>
+              <%= link_to "My Stats", "#" %>
+              <%= link_to "Sign out", destroy_user_session_path, method: :delete %>
+            <% else %>
+              <%= link_to "Sign In", new_user_session_path %>
+              <%= link_to "Sign Up", new_user_registration_path %>
+            <% end %>
+          </div>
+        </div>
+        <br class="clear-fix" />
+      </div>
+
+     <% if notice.present? %>
+    <p class="alert alert-info"><%= notice %></p>
+  <% end %>
+  <% if alert.present? %>
+    <p class="alert alert-danger"><%= alert %></p>
+  <% end %>
+      <%= yield %>
   </body>
 </html>

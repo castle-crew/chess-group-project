@@ -1,7 +1,4 @@
 FactoryBot.define do
-  factory :board do
-    
-  end
 
   factory :user do
     sequence :email do |n|
@@ -18,6 +15,9 @@ FactoryBot.define do
   end
 
   factory :player do
+  end
+
+  factory :piece do
   end
 
 end
