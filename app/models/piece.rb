@@ -1,6 +1,7 @@
 class Piece < ApplicationRecord
-belongs_to :game
 
+  belongs_to :game
+  
   def self.types
     %w(King Knight Pawn Queen Rook)
   end
@@ -30,8 +31,5 @@ belongs_to :game
   def capture!(piece_at_location)
     update_attributes(x_position: nil, y_position: nil)
   end
-
-
-
 
   end

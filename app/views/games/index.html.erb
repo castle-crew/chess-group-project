@@ -1,0 +1,11 @@
+<h1> Available Games </h1>
+
+<h2> 
+  <% @games.each do |game| %>
+    <% if game.white_player != nil && game.black_player == nil %>
+      <%= link_to 'Check out this Game', game_path(game), :method=> :get %>
+    <% end %>
+    <br />
+  <% end %>
+ </h2>
+
