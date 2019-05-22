@@ -1,5 +1,8 @@
 # require 'rails_helper'
 
+# COMMENTED OUT SIMPLY TO MAKE READING TESTS EASIER
+# ALSO DIDN'T KNOW IF THIS WAS GOING TO BE USED
+
 # RSpec.describe BoardsController, type: :controller do
 #   describe "boards#show action" do
 #     it "should successfully show the board" do

@@ -1,13 +1,14 @@
 require 'rails_helper'
 
 RSpec.describe GamesController, type: :controller do
-  
+
   describe "games#new action" do
 
     it "should successfully start a new game" do
       @game = FactoryBot.create(:game)
-      expect(response).to have_http_status(:success)
+      expect(@game).to have_attributes(:winner => nil)
     end
+
   end
 
   describe "games#create action" do
@@ -68,6 +69,14 @@ RSpec.describe GamesController, type: :controller do
       @game.update_attribute(:black_player, @user.id)
       
       expect(@game.black_player).to eq(@user.id)
+    end
+
+    it "should have pieces populated on the board" do
+      @game = FactoryBot.create(:game)
+      
+      pieces = @game.pieces.count
+
+      expect(pieces).to eq(32)
     end
   end
 end

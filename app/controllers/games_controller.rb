@@ -7,7 +7,6 @@ class GamesController < ApplicationController
 
   def index
     @games = Game.all
-    @doom = "does this show up?!"
   end
 
   def create
@@ -16,12 +15,10 @@ class GamesController < ApplicationController
     if @game.valid?
       redirect_to game_path(@game)
     end
-
   end
 
   def show
     @game = Game.find_by_id(params[:id])
-  
   end
 
   def update
