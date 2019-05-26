@@ -8,7 +8,7 @@ FactoryBot.define do
     password_confirmation {"secretPassword" }
   end
 
-  factory :game do
+  factory :Game do
     sequence :game_id do |n|
       "#{n}"
     end
@@ -20,7 +20,17 @@ FactoryBot.define do
   factory :piece do
   end
 
+  # factory :King do
+  #   color { ["white", "black"].sample}
+  # end
   factory :King do
+    trait :white_king do
+      color {"white"}
+    end
+
+    trait :black_king do
+      color {"black"}
+    end
   end
 
   factory :Queen do

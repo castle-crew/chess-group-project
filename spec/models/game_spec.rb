@@ -9,8 +9,17 @@ RSpec.describe Game, type: :model do
       pieces = @game.pieces.count
 
       expect(pieces).to eq(32)
-      # expect(@game).to have_attributes(:Piece => :King)
-      # expect(:King).to have_attributes(:x_space => 4, :y_space => 0)
+  
     end
+  end
+
+  describe "game in_check?" do
+    it "should successfully show king's color" do
+      @white_king = FactoryBot.create(:white_king)
+
+      expect(@white_king).to have_attributes(color => "white")
+    end
+
+
   end
 end

@@ -72,5 +72,5 @@ source 'https://rails-assets.org' do
 end
 
 gem 'devise'
-gem 'rubocop', require: false
 gem 'rubocop-performance'
+gem 'ffi', '~> 1.11', '>= 1.11.1'

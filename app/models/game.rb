@@ -40,4 +40,10 @@ after_create :populate_board!
    King.create(game_id: id, x_space: 4, y_space: 7, color: "white")
  end
 
+def in_check? 
+
+
+end
+
+
 end
