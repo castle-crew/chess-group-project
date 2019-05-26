@@ -19,15 +19,15 @@ class Piece < ApplicationRecord
   end
 
   def piece_at_location(x, y)
-    game.pieces.find_by(x_position: x, y_position: y)
+    game.pieces.find_by(x_space: x, y_space: y)
   end
 
   def opposing_piece_at_location?(x, y)
     space_occupied(x, y) && (piece_at_location(x, y).color != color)
   end
 
-  def capture!(piece_at_location)
-    update_attributes(x_position: nil, y_position: nil)
+  def capture!(x, y)
+    
   end
 
 
