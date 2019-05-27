@@ -18,6 +18,20 @@ class Piece < ApplicationRecord
       return false unless opposing_piece_at_location?(x, y)
       capture!(x, y)
     end
+
+    increment_move_count()
+  end
+
+  def increment_move_count
+    new_move_count = 0
+
+    if move_count == nil
+      new_move_count = 1
+    else
+      new_move_count = move_count + 1
+    end
+
+    update_attributes(move_count: new_move_count)
   end
 
   def piece_at_location(x, y)
@@ -36,6 +50,24 @@ class Piece < ApplicationRecord
     game.pieces.where('x_space = ? AND y_space = ?', x, y).present?
   end
 
+  def queenside_valid?
+    return false
+    # this method will be overridden
+  end
+
+  def kingside_valid?
+    return false
+    # this method will be overridden
+  end
+
+  def queenside
+    # this method will be overridden 
+  end
+
+  def kingside
+    # this method will be overridden
+  end
+
   def vertical_move?(x, y)
     return true if x_space == x && y_space != y
   end
@@ -48,7 +80,6 @@ class Piece < ApplicationRecord
     return true if (x_space - x).abs == (y_space - y).abs && (x_space != x)
   end
 
-  
   def vertical_obstruction?(x, y)
     y_min = [y_space, y].min
     y_max = [y_space, y].max
@@ -58,7 +89,6 @@ class Piece < ApplicationRecord
     false
   end
 
- 
   def horizontal_obstruction?(x, y)
     x_min = [x_space, x].min
     x_max = [x_space, x].max
@@ -67,8 +97,6 @@ class Piece < ApplicationRecord
     end
     false
   end
-
- 
 
   def diagonal_obstruction?(x, y)
     x_direction = x_space < x ? 1 : -1
@@ -83,7 +111,6 @@ class Piece < ApplicationRecord
     end
     false
   end
-
  
   def is_obstructed?(x, y)
     return vertical_obstruction?(x, y) if vertical_move?(x, y)
