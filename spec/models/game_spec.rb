@@ -20,6 +20,22 @@ RSpec.describe Game, type: :model do
       expect(@white_king).to have_attributes(color => "white")
     end
 
+    it "should tell if pawn position causes check" do
+      @white_pawn = FactoryBot.create(:white_pawn)
+      @black_king = FactoryBot.create(:black_king)
 
+      check = @white_pawn.valid_move?(@black_king.x_space, @black_king.y_space)
+      
+      expect(check).to eq(true)
+    end
+
+    it "should tell if bishop position causes check" do
+      @black_bishop = FactoryBot.create(:black_bishop)
+      @white_king = FactoryBot.create(:white_king)
+
+      check = @black_bishop.valid_move?(@white_king.x_space, @white_king.y_space)
+
+      expect(check).to eq(true)
+    end
   end
 end

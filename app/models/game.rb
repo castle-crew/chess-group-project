@@ -41,9 +41,31 @@ after_create :populate_board!
  end
 
 def in_check? 
+  if @white_pawn.valid_move?(@black_king.x_space, @black_king.y_space) == true||
+  if @white_queen.valid_move?(@black_king.x_space, @black_king.y_space) == true ||
+  if @white_rook.valid_move?(@black_king.x_space, @black_king.y_space) == true ||    
+  if @white_bishop.valid_move?(@black_king.x_space, @black_king.y_space) == true ||
+  if @white_knight.valid_move?(@black_king.x_space, @black_king.y_space) == true ||
+  if @white_king.valid_move?(@black_king.x_space, @black_king.y_space) == true ||
 
-
+  if @black_pawn.valid_move?(@white_king.x_space, @white_king.y_space) == true||
+  if @black_queen.valid_move?(@white_king.x_space, @white_king.y_space) == true ||
+  if @black_rook.valid_move?(@white_king.x_space, @white_king.y_space) == true ||    
+  if @black_bishop.valid_move?(@white_king.x_space, @white_king.y_space) == true ||
+  if @black_knight.valid_move?(@white_king.x_space, @white_king.y_space) == true ||
+  if @black_king.valid_move?(@white_king.x_space, @white_king.y_space) == true ||
+    return true
+  else
+    return false
 end
 
-
+def in_check?
+  @piece.each do |piece|
+    if @white_piece.valid_move(@black_king.x_space, @black_king.y_space)||
+    if @black_piece.valid_move(@white_king.x_space, @white_king.y_space)||
+      return true
+    else
+      return false
+    end
+  end
 end

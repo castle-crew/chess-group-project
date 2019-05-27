@@ -18,11 +18,15 @@ FactoryBot.define do
   end
 
   factory :piece do
+    trait :white_piece do
+      color {"white"}
+    end
+
+    trait :black_piece do
+      color {"black"}
+    end
   end
 
-  # factory :King do
-  #   color { ["white", "black"].sample}
-  # end
   factory :King do
     trait :white_king do
       color {"white"}
@@ -34,18 +38,53 @@ FactoryBot.define do
   end
 
   factory :Queen do
+    trait :white_queen do
+      color {"white"}
+    end
+
+    trait :black_queen do
+      color {"black"}
+    end
   end
 
   factory :Rook do
+    trait :white_rook do
+      color {"white"}
+    end
+
+    trait :black_rook do
+      color {"black"}
+    end
   end
 
   factory :Bishop do
+    trait :white_bishop do
+      color {"white"}
+    end
+
+    trait :black_bishop do
+      color {"black"}
+    end
   end
 
   factory :Pawn do
+    trait :white_pawn do
+      color {"white"}
+    end
+
+    trait :black_pawn do
+      color {"black"}
+    end
   end
 
   factory :Knight do
+    trait :white_knight do
+      color {"white"}
+    end
+
+    trait :black_knight do
+      color {"black"}
+    end
   end
 end
 
