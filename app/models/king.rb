@@ -18,13 +18,15 @@ class King < Piece
       y_space == y 
       if color = "black"
         queenside_rook = Piece.find(x_space: 0, y_space: 0, type: "Rook", color: "black", move_count: nil)
-        if queenside_rook != nil
+        if queenside_rook != nil and
+          !is_obstructed?(0, 0)
           return true
         end
       end
       if color = "white"
         queenside_rook = Piece.find(x_space: 0, y_space: 7, type: "Rook", color: "white", move_count: nil)
-        if queenside_rook != nil
+        if queenside_rook != nil and
+          !is_obstructed?(0, 7)
           return true
         end
       end
@@ -39,13 +41,15 @@ class King < Piece
       y_space == y 
       if color = "black"
         kingside_rook = Piece.find(x_space: 7, y_space: 0, type: "Rook", color: "black", move_count: nil)
-        if kingside_rook != nil
+        if kingside_rook != nil and
+          !is_obstructed?(7, 0)
           return true
         end
       end
       if color = "white"
         kingside_rook = Piece.find(x_space: 7, y_space: 7, type: "Rook", color: "white", move_count: nil)
-        if kingside_rook != nil
+        if kingside_rook != nil and
+          !is_obstructed?(7, 7)
           return true
         end
       end
