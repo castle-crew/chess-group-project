@@ -1,5 +1,5 @@
 class GamesController < ApplicationController
-  before_action :authenticate_user!, only: [:new, :create, :update, :show, :index]
+  before_action :authenticate_user!, only: [:new, :create, :update, :show, :index, :forfeit]
 
   def new
     @game = Game.new
@@ -27,12 +27,22 @@ class GamesController < ApplicationController
     if current_user && @game.black_player == nil
       @game.update_attribute(:black_player, current_user.id)
     end
+
+
+  end
+
+  def forfeit
+  p "we have forfeit"
+  @game = Game.find_by_id(params[:id])
+  # current_user.id.games
+  
+  #   redirect_to game_path(@game)
   end
 
   private
 
   def game_params
-    params.require(:game).permit(:id, :white_player, :black_player, :winner)
+    params.require(:game).permit(:id, :white_player, :black_player, :winner, :loser)
   end
 end
 

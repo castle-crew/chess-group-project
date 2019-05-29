@@ -265,4 +265,19 @@
     </div>
   </div>
 </div>
+<div class="col-xs-6 col-sm-6">
+  <%= form_for @game, url: {action: "forfeit"} do |f| %>
+ <%= f.hidden_field :white_player %>
+ <%= f.hidden_field :black_player %>
+ <%= f.hidden_field :id %>
+ <%= f.submit 'Forfeit Game', :class =>'btn btn-danger' %>
+<% end %>
+</div>
+
+
+
+
+
+
+
 
