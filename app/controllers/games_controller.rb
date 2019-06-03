@@ -32,11 +32,42 @@ class GamesController < ApplicationController
   end
 
   def forfeit
-  p "we have forfeit"
-  @game = Game.find_by_id(params[:id])
-  # current_user.id.games
+
+    @game = Game.find_by_id(game_params[:id])
+    
+    unless @game
+      return "A horrible error has occurred of which we cannot recover!"
+    end
+
+    user = current_user.id()
+
+    # Future refactor
+    # TODO: We don't actually need the if loser or if winner in the real app
+
+    if game_params[:white_player] == user 
+      @game.update(winner: game_params[:black_player])
+
+      loser = Player.find_by_id(user)    
+      if loser
+        loser.update(loses: loser.loses.to_i + 1)
+      end
+      winner = Player.find_by_id(game_params[:black_player])
+      if winner
+        winner.update(wins: winner.wins.to_i + 1)
+      end
+    else
+      @game.update(winner: game_params[:white_player])
+      loser = Player.find_by_id(user)    
+      if loser
+        loser.update(loses: loser.loses.to_i + 1)
+      end
+      winner = Player.find_by_id(game_params[:white_player])
+      if winner
+        winner.update(wins: winner.wins.to_i + 1)
+      end
+    end 
+    redirect_to root_path
   
-  #   redirect_to game_path(@game)
   end
 
   private
