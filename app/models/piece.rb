@@ -17,6 +17,7 @@ class Piece < ApplicationRecord
     if space_occupied?(x, y)
       return false unless opposing_piece_at_location?(x, y)
       capture!(x, y)
+      update_piece_location(x, y)
     end
 
     increment_move_count()
@@ -35,15 +36,19 @@ class Piece < ApplicationRecord
   end
 
   def piece_at_location(x, y)
-    game.pieces.find_by(x_position: x, y_position: y)
+    game.pieces.find_by(x_space: x, y_space: y)
   end
 
   def opposing_piece_at_location?(x, y)
     space_occupied(x, y) && (piece_at_location(x, y).color != color)
   end
 
-  def capture!(piece_at_location)
-    update_attributes(x_position: nil, y_position: nil)
+  def capture!(x, y)
+    piece_at_location.update_attributes(x_space: nil, y_space: nil)
+  end
+  
+  def update_piece_location(x, y)
+    update_attributes(x_space: x, y_space: y)
   end
 
   def space_occupied?(x, y)
