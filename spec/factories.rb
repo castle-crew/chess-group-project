@@ -8,7 +8,7 @@ FactoryBot.define do
     password_confirmation {"secretPassword" }
   end
 
-  factory :Game do
+  factory :game do
     sequence :game_id do |n|
       "#{n}"
     end
@@ -18,71 +18,71 @@ FactoryBot.define do
   end
 
   factory :piece do
-    trait :white_piece do
+    factory :white_piece do
       color {"white"}
     end
 
-    trait :black_piece do
+    factory :black_piece do  
       color {"black"}
     end
   end
 
-  factory :King do
-    trait :white_king do
+  factory :king do
+    factory :white_king do
       color {"white"}
     end
 
-    trait :black_king do
+    factory :black_king do  
       color {"black"}
     end
   end
 
-  factory :Queen do
-    trait :white_queen do
+  factory :queen do
+    factory :white_queen do
       color {"white"}
     end
 
-    trait :black_queen do
+    factory :black_queen do  
       color {"black"}
     end
   end
 
-  factory :Rook do
-    trait :white_rook do
+  factory :rook do
+    factory :white_rook do
       color {"white"}
     end
 
-    trait :black_rook do
+    factory :black_rook do  
       color {"black"}
     end
   end
 
-  factory :Bishop do
-    trait :white_bishop do
+  factory :bishop do
+    factory :white_bishop do
       color {"white"}
     end
 
-    trait :black_bishop do
+    factory :black_bishop do  
       color {"black"}
     end
   end
 
-  factory :Pawn do
-    trait :white_pawn do
+  factory :pawn do
+    factory :white_pawn do
       color {"white"}
     end
 
-    trait :black_pawn do
+    factory :black_pawn do  
       color {"black"}
     end
   end
 
-  factory :Knight do
-    trait :white_knight do
+  factory :knight do
+    factory :white_knight do
       color {"white"}
     end
 
-    trait :black_knight do
+    factory :black_knight do  
       color {"black"}
     end
   end
