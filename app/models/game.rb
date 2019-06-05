@@ -40,40 +40,30 @@ class Game < ApplicationRecord
      King.create(game_id: id, x_space: 4, y_space: 7, color: "white")
    end
 
-# def in_check? 
-#   if @white_pawn.valid_move?(@black_king.x_space, @black_king.y_space) == true||
-#   if @white_queen.valid_move?(@black_king.x_space, @black_king.y_space) == true ||
-#   if @white_rook.valid_move?(@black_king.x_space, @black_king.y_space) == true ||    
-#   if @white_bishop.valid_move?(@black_king.x_space, @black_king.y_space) == true ||
-#   if @white_knight.valid_move?(@black_king.x_space, @black_king.y_space) == true ||
-#   if @white_king.valid_move?(@black_king.x_space, @black_king.y_space) == true ||
-
-#   if @black_pawn.valid_move?(@white_king.x_space, @white_king.y_space) == true||
-#   if @black_queen.valid_move?(@white_king.x_space, @white_king.y_space) == true ||
-#   if @black_rook.valid_move?(@white_king.x_space, @white_king.y_space) == true ||    
-#   if @black_bishop.valid_move?(@white_king.x_space, @white_king.y_space) == true ||
-#   if @black_knight.valid_move?(@white_king.x_space, @white_king.y_space) == true ||
-#   if @black_king.valid_move?(@white_king.x_space, @white_king.y_space) == true ||
-#     return true
-#   else
-#     return false
-# end
-# yes
-# pawn, bishop, queen, rook, knight
-
-# no?
-
   def check?(color)
-    colors = kings.map { |piece| piece.color }
-    black_king = colors.fetch(0)
-    white_king = colors.fetch(1)
-    white_piece = 
-    piece.each do |piece|
-      if white_piece.valid_move(black_king.x_space, black_king.y_space) 
-      elsif black_piece.valid_move(white_king.x_space, white_king.y_space)
-        return true
-      else
-        return false
+    black_king = game.pieces.find_by(color: "black", type: "King")
+    white_king = game.pieces.find_by(color: "white", type: "King")
+    
+    black_piece = game.pieces.find_by(color: "black", type: "Piece")
+    white_piece = game.pieces.find_by(color: "white", type: "Piece")
+
+    if color == "white"
+      white_piece.each do |piece|
+        if white_piece.valid_move(black_king.x_space, black_king.y_space) 
+          return true
+        else
+          return false
+        end
+      end
+    end
+
+    if color == "black"
+      black_piece.each do |piece|
+        if black_piece.valid_move(white_king.x_space, white_king.y_space)
+          return true
+        else
+          return false
+        end
       end
     end
   end

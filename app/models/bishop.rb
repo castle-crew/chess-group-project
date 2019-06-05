@@ -1,16 +1,21 @@
 class Bishop < Piece
   
    def valid_move?(x, y)
-    
-    if space_occupied?(x, y)
-      return false if opposing_piece_at_location?(x, y) == false 
+      if space_occupied?(x, y)
+        return false if opposing_piece_at_location?(x, y) == false 
+      end
+      if legal_move?(x, y) == false
+        return false
+      else
+        return true
+      end
     end
-    return false if legal_move?(x, y) == false
-    true
-  end
 
   def legal_move?(x, y)
-    return true if diagonal_move?(x, y) && !diagonal_obstruction?(x, y)
-    false
+    if diagonal_move?(x, y) && !diagonal_obstruction?(x, y)
+      return true
+    else  
+      return false
+    end
   end
 end

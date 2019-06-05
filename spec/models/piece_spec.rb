@@ -3,37 +3,19 @@ require 'support/shared_examples_for_pieces.rb'
 
 RSpec.describe Piece, type: :model do
 
-describe "game check?" do
-    it "should successfully identify the king color" do
+  describe "piece population" do
+    it "should successfully add 14 total pawns to game" do
       game = FactoryBot.create(:game)
-      kings = game.pieces.kings
-      colors = kings.map { |piece| piece.color }
+      pawns = game.pieces.pawns.count
 
-      expect(colors).to include("white", "black")
+      expect(pawns).to eq(16)
     end
 
-    it "should know there are 2 kings on the board" do
+    it "should successfully add 4 total rooks to game" do
       game = FactoryBot.create(:game)
-      kings = game.pieces.kings.count
+      rooks = game.pieces.rooks.count
 
-      expect(kings).to eq(2)
-    end
-
-    it "should detect the kings in the proper game" do
-      game = FactoryBot.create(:game)
-      kings = game.pieces.kings
-      id = kings.map { |piece| piece.game_id }
-
-      expect(id).to include(game.id)
-    end
-
-    it "should return true if king under attack" do
-      game = FactoryBot.create(:game)
-      kings = game.pieces.kings
-      colors = kings.map { |piece| piece.color }
-      white_king = kings.colors.fetch(1)
-      puts white_king
-
+      expect(rooks).to eq(4)
     end
   end
 end
