@@ -51,13 +51,13 @@ after_create :populate_board!
       white_king = Piece.find(color: "white", game_id: id, type: "King")
 
       potential_move = [
-        [white_king.x_space + 1, white_king.y_space]
-        [white_king.x_space - 1, white_king.y_space]
-        [white_king.x_space, white_king.y_space + 1]
-        [white_king.x_space, white_king.y_space - 1]
-        [white_king.x_space + 1, white_king.y_space + 1]
-        [white_king.x_space - 1, white_king.y_space - 1]
-        [white_king.x_space + 1, white_king.y_space - 1]
+        [white_king.x_space + 1, white_king.y_space],
+        [white_king.x_space - 1, white_king.y_space],
+        [white_king.x_space, white_king.y_space + 1],
+        [white_king.x_space, white_king.y_space - 1],
+        [white_king.x_space + 1, white_king.y_space + 1],
+        [white_king.x_space - 1, white_king.y_space - 1],
+        [white_king.x_space + 1, white_king.y_space - 1],
         [white_king.x_space - 1, white_king.y_space + 1]
         ]
 
@@ -89,13 +89,13 @@ after_create :populate_board!
       black_king = Piece.find(color: "black", game_id: id, type: "King")
 
       potential_move = [
-        [black_king.x_space + 1, black_king.y_space]
-        [black_king.x_space - 1, black_king.y_space]
-        [black_king.x_space, black_king.y_space + 1]
-        [black_king.x_space, black_king.y_space - 1]
-        [black_king.x_space + 1, black_king.y_space + 1]
-        [black_king.x_space - 1, black_king.y_space - 1]
-        [black_king.x_space + 1, black_king.y_space - 1]
+        [black_king.x_space + 1, black_king.y_space],
+        [black_king.x_space - 1, black_king.y_space],
+        [black_king.x_space, black_king.y_space + 1],
+        [black_king.x_space, black_king.y_space - 1],
+        [black_king.x_space + 1, black_king.y_space + 1],
+        [black_king.x_space - 1, black_king.y_space - 1],
+        [black_king.x_space + 1, black_king.y_space - 1],
         [black_king.x_space - 1, black_king.y_space + 1]
         ]
 
