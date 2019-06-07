@@ -3,7 +3,7 @@ class Piece < ApplicationRecord
   belongs_to :game
   
   def self.types
-    %w(King Knight Pawn Queen Rook)
+    %w(King Knight Pawn Queen Rook Bishop)
   end
 
   scope :kings, -> { where(type: 'King') }
@@ -11,6 +11,7 @@ class Piece < ApplicationRecord
   scope :queens, -> { where(type: 'Queen') }
   scope :rooks, -> { where(type: 'Rook') }
   scope :pawns, -> { where(type: 'Pawn') }
+  scope :bishops, -> { where(type: 'Bishop') }
   
   def move_to!(x, y)
     return false unless valid_move?(x, y)
@@ -32,7 +33,8 @@ class Piece < ApplicationRecord
       new_move_count = move_count + 1
     end
 
-    update_attributes(move_count: new_move_count)
+    update(move_count: new_move_count)
+
   end
 
   def piece_at_location(x, y)
@@ -40,15 +42,15 @@ class Piece < ApplicationRecord
   end
 
   def opposing_piece_at_location?(x, y)
-    space_occupied(x, y) && (piece_at_location(x, y).color != color)
+    space_occupied?(x, y) && (piece_at_location(x, y).color != color)
   end
 
   def capture!(x, y)
-    piece_at_location.update_attributes(x_space: nil, y_space: nil)
+    piece_at_location.update(x_space: nil, y_space: nil)
   end
   
   def update_piece_location(x, y)
-    update_attributes(x_space: x, y_space: y)
+    game.pieces.update(x_space: x, y_space: y)
   end
 
   def space_occupied?(x, y)
@@ -97,8 +99,8 @@ class Piece < ApplicationRecord
   def horizontal_obstruction?(x, y)
     x_min = [x_space, x].min
     x_max = [x_space, x].max
-    (x_min + 1...x_max - 1).each do |x_coord|
-      return true if space_occupied?(x_coord, y)
+    (x_min + 1...x_max - 1).each do |x_space|
+      return true if space_occupied?(x_space, y)
     end
     false
   end
@@ -123,5 +125,6 @@ class Piece < ApplicationRecord
     return diagonal_obstruction?(x, y) if diagonal_move?(x, y)
     false
   end
-  
 end
+
+   

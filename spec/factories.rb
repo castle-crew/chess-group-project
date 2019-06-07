@@ -17,25 +17,70 @@ FactoryBot.define do
   factory :player do
   end
 
-  factory :piece do
+  factory :king do
+    factory :white_king do
+      color {"white"}
+    end
+
+    factory :black_king do  
+      color {"black"}
+    end
   end
 
-  factory :King do
+  factory :queen do
+    factory :white_queen do
+      color {"white"}
+    end
+
+    factory :black_queen do  
+      color {"black"}
+    end
   end
 
-  factory :Queen do
+  factory :rook do
+    factory :white_rook do
+      color {"white"}
+    end
+
+    factory :black_rook do  
+      color {"black"}
+    end
   end
 
-  factory :Rook do
+  factory :bishop do
+    factory :white_bishop do
+      color {"white"}
+      sequence :id do |n|
+        "#{n}"
+      end
+    end
+
+    factory :black_bishop do  
+      color {"black"}
+      sequence :id do |n|
+        "#{n}"
+      end
+    end
   end
 
-  factory :Bishop do
+  factory :pawn do
+    factory :white_pawn do
+      color {"white"}
+    end
+
+    factory :black_pawn do  
+      color {"black"}
+    end
   end
 
-  factory :Pawn do
-  end
+  factory :knight do
+    factory :white_knight do
+      color {"white"}
+    end
 
-  factory :Knight do
+    factory :black_knight do  
+      color {"black"}
+    end
   end
 end
 

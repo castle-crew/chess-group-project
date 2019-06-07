@@ -10,4 +10,10 @@ class PiecesController < ApplicationController
     # TO DO: redirect_to game_show once built
   end
 
+  private
+
+  def piece_params
+    params.require(:piece).permit(:piece_id, :color, :x_space, :y_space, :status, :game_id)
+end
+
 end
