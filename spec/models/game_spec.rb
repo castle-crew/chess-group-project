@@ -16,9 +16,10 @@ RSpec.describe Game, type: :model do
     it "should successfully identify the king color" do
       game = FactoryBot.create(:game)
       white_king = game.pieces.find_by(color: "white", type: "King")
+      black_king = game.pieces.find_by(color: "black", type: "King")
 
       expect(white_king).to have_attributes(:color => "white")
-      expect(white_king).to_not have_attributes(:color => "black")
+      expect(black_king).to have_attributes(:color => "black")
     end
 
     it "should know there are 2 kings on the board" do
@@ -30,12 +31,25 @@ RSpec.describe Game, type: :model do
 
     it "should detect the kings in the proper game" do
       game = FactoryBot.create(:game)
-      kings = game.pieces.kings
-      id = kings.map { |piece| piece.game_id }
+      white_king = game.pieces.find_by(type: "King", color: "white")
+      black_king = game.pieces.find_by(type: "King", color: "black")
 
-      expect(id).to include(game.id)
+      expect(white_king.game_id).to eq(game.id)
+      expect(black_king.game_id).to eq(game.id)
     end
 
+    it "should detect the pawns in the proper game" do
+      game = FactoryBot.create(:game)
+      pawn = game.pieces.where(type: "Pawn")
+      pawn_one = pawn[0]
+      pawn_four = pawn[4]
+      pawn_eleven = pawn[11]
+
+      expect(pawn_one.game_id).to eq(game.id)
+      expect(pawn_four.game_id).to eq(game.id)
+      expect(pawn_eleven.game_id).to eq(game.id)
+
+    end
     it "should return true if white king in check by black bishop" do
       game = FactoryBot.create(:game)
       white_king = game.pieces.find_by(color: "white", type: "King")
