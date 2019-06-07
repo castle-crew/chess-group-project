@@ -34,6 +34,7 @@ class Piece < ApplicationRecord
     end
 
     update(move_count: new_move_count)
+
   end
 
   def piece_at_location(x, y)
@@ -125,3 +126,5 @@ class Piece < ApplicationRecord
     false
   end
 end
+
+   

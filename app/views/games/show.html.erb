@@ -24,11 +24,11 @@
             c8
           </div>
           <div class="file-d black">
-            <%= image_tag "wK.png" %>
+            <%= image_tag "wQ.png" %>
             d8
           </div>
           <div class="file-e white">
-            <%= image_tag "wQ.png" %>
+            <%= image_tag "wK.png" %> 
             e8
           </div>
           <div class="file-f black">
@@ -242,11 +242,11 @@
             c1
           </div>
           <div class="file-d white">
-            <%= image_tag "bK.png" %>
+            <%= image_tag "bQ.png" %>
             d1
           </div>
           <div class="file-e black">
-            <%= image_tag "bQ.png" %>
+            <%= image_tag "bK.png" %>
             e1
           </div>
           <div class="file-f white">
@@ -265,4 +265,26 @@
     </div>
   </div>
 </div>
+<div class="col-xs-6 col-sm-6">
+  <%= form_for @game, url: {action: "forfeit"} do |f| %>
+ <%= f.hidden_field :white_player %>
+ <%= f.hidden_field :black_player %>
+ <%= f.hidden_field :id %>
+ <%= f.submit 'Forfeit Game', :class =>'btn btn-danger' %>
+<% end %>
+</div>
+
+<script>
+  $('#myModal').on('shown.bs.modal', function () {
+  $('#myInput').trigger('focus')
+})
+</script>
+  
+
+
+
+
+
+
+
 

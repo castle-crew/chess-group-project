@@ -77,5 +77,86 @@ class Game < ApplicationRecord
       end
     end
   end
+
+  def checkmate
+    if check?("white")
+      white_king = Piece.find(color: "white", game_id: id, type: "King")
+
+      potential_move = [
+        [white_king.x_space + 1, white_king.y_space],
+        [white_king.x_space - 1, white_king.y_space],
+        [white_king.x_space, white_king.y_space + 1],
+        [white_king.x_space, white_king.y_space - 1],
+        [white_king.x_space + 1, white_king.y_space + 1],
+        [white_king.x_space - 1, white_king.y_space - 1],
+        [white_king.x_space + 1, white_king.y_space - 1],
+        [white_king.x_space - 1, white_king.y_space + 1]
+        ]
+
+      valid_move_arr = []
+
+      black_pieces = Piece.where(color: "black", game_id: id, status: true)
+
+      potential_move.each do |coordinate|
+        if white_king.valid_move?(coordinate[0], coordinate[1])
+          valid_move_arr.push(coordinate)
+        end
+      end
+      valid_move_arr.each do |coordinate|
+        black_pieces.each do |black_piece|
+          if black_piece.valid_move?(coordinate[0], coordinate[1])
+            valid_move_arr.delete(coordinate)
+          end
+        end
+      end
+
+      if valid_move_arr.length == 0
+        return true
+      end
+
+      return false 
+    end
+
+    if check?("black")
+      black_king = Piece.find(color: "black", game_id: id, type: "King")
+
+      potential_move = [
+        [black_king.x_space + 1, black_king.y_space],
+        [black_king.x_space - 1, black_king.y_space],
+        [black_king.x_space, black_king.y_space + 1],
+        [black_king.x_space, black_king.y_space - 1],
+        [black_king.x_space + 1, black_king.y_space + 1],
+        [black_king.x_space - 1, black_king.y_space - 1],
+        [black_king.x_space + 1, black_king.y_space - 1],
+        [black_king.x_space - 1, black_king.y_space + 1]
+        ]
+
+      valid_move_arr = []
+
+      white_pieces = Piece.where(color: "white", game_id: id, status: true)
+
+      potential_move.each do |coordinate|
+        if black_king.valid_move?(coordinate[0], coordinate[1])
+          valid_move_arr.push(coordinate)
+        end
+      end
+      valid_move_arr.each do |coordinate|
+        white_pieces.each do |white_piece|
+          if white_piece.valid_move?(coordinate[0], coordinate[1])
+            valid_move_arr.delete(coordinate)
+          end
+        end
+      end
+
+      if valid_move_arr.length == 0
+        return true
+      end
+
+      return false 
+    end  
+      
+    return false  
+  end
 end
+
 
