@@ -17,16 +17,6 @@ FactoryBot.define do
   factory :player do
   end
 
-  factory :piece do
-    factory :white_piece do
-      color {"white"}
-    end
-
-    factory :black_piece do  
-      color {"black"}
-    end
-  end
-
   factory :king do
     factory :white_king do
       color {"white"}
@@ -60,10 +50,16 @@ FactoryBot.define do
   factory :bishop do
     factory :white_bishop do
       color {"white"}
+      sequence :id do |n|
+        "#{n}"
+      end
     end
 
     factory :black_bishop do  
       color {"black"}
+      sequence :id do |n|
+        "#{n}"
+      end
     end
   end
 

@@ -44,12 +44,17 @@ class Game < ApplicationRecord
     black_king = game.pieces.find_by(color: "black", type: "King")
     white_king = game.pieces.find_by(color: "white", type: "King")
     
-    black_piece = game.pieces.find_by(color: "black", type: "Piece")
-    white_piece = game.pieces.find_by(color: "white", type: "Piece")
+    black_piece = game.pieces.where(color: "black")
+    white_piece = game.pieces.where(color: "white")
 
     if color == "white"
       white_piece.each do |piece|
-        if white_piece.valid_move(black_king.x_space, black_king.y_space) 
+        if white_piece.pawns.valid_move?(black_king.x_space, black_king.y_space)||
+         white_piece.queens.valid_move?(black_king.x_space, black_king.y_space) ||
+         white_piece.rooks.valid_move?(black_king.x_space, black_king.y_space) ||
+         white_piece.knights.valid_move?(black_king.x_space, black_king.y_space) ||
+         white_piece.bishops.valid_move?(black_king.x_space, black_king.y_space) ||
+         white_piece.kings.valid_move?(black_king.x_space, black_king.y_space)
           return true
         else
           return false
@@ -59,7 +64,12 @@ class Game < ApplicationRecord
 
     if color == "black"
       black_piece.each do |piece|
-        if black_piece.valid_move(white_king.x_space, white_king.y_space)
+        if black_piece.pawns.valid_move?(white_king.x_space, white_king.y_space)||
+         black_piece.queens.valid_move?(white_king.x_space, white_king.y_space) ||
+         black_piece.rooks.valid_move?(white_king.x_space, white_king.y_space) ||
+         black_piece.knights.valid_move?(white_king.x_space, white_king.y_space) ||
+         black_piece.bishops.valid_move?(white_king.x_space, white_king.y_space) ||
+         black_piece.kings.valid_move?(white_king.x_space, white_king.y_space)
           return true
         else
           return false

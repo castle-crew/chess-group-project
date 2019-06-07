@@ -12,13 +12,13 @@ RSpec.describe Game, type: :model do
     end
   end
 
-  describe "method check?" do
+  describe "method check?(color)" do
     it "should successfully identify the king color" do
       game = FactoryBot.create(:game)
-      kings = game.pieces.kings
-      colors = kings.map { |piece| piece.color }
+      white_king = game.pieces.find_by(color: "white", type: "King")
 
-      expect(colors).to include("white", "black")
+      expect(white_king).to have_attributes(:color => "white")
+      expect(white_king).to_not have_attributes(:color => "black")
     end
 
     it "should know there are 2 kings on the board" do
@@ -38,38 +38,61 @@ RSpec.describe Game, type: :model do
 
     it "should return true if white king in check by black bishop" do
       game = FactoryBot.create(:game)
-      king = game.pieces.find_by(color: "white", type: "King")
-      bishop = game.pieces.find_by(color: "black", x_space: 5, y_space: 0, type: "Bishop")
-      bishop.update_piece_location(3,6)
+      white_king = game.pieces.find_by(color: "white", type: "King")
+      black_bishop = game.pieces.where(color: "black", type: "Bishop")
 
-      expect(bishop.legal_move?(4,7)).to be(true)
-    end
+      black_bishop_ONE = black_bishop[0]
+      black_bishop_ONE.update(x_space: 3, y_space: 6)
+      white_king.update(x_space: 4, y_space: 7)
+      expect(black_bishop_ONE.valid_move?(4,7)).to be(true)
 
-    it "should return true if black king in check by white bishop" do
-      game = FactoryBot.create(:game)
-      king = game.pieces.find_by(color: "black", type: "King")
-      bishop = game.pieces.find_by(color: "white", x_space: 5, y_space: 7, type: "Bishop")
-      bishop.update_piece_location(5,6)
-
-      expect(bishop.legal_move?(4,7)).to be(true)
     end
 
     it "should return true if black king in check by white rook" do
       game = FactoryBot.create(:game)
-      king = game.pieces.find_by(color: "black", type: "King")
-      rook = game.pieces.find_by(color: "white", x_space: 0, y_space: 7, type: "Rook")
-      rook.update_piece_location(1,7)
+      black_king = game.pieces.find_by(color: "black", type: "King")
+      white_rook = game.pieces.where(color: "white", type: "Rook")
+      white_rook_ONE = white_rook[0]
 
-      expect(rook.valid_move?(0,7)).to be(true)
+      white_rook_ONE.update(x_space: 0, y_space: 4) 
+      black_king.update(x_space: 0, y_space: 7)
+
+      expect(white_rook_ONE.valid_move?(0,7)).to be(true)
     end
 
     it "should return true if black king in check by white knight" do
       game = FactoryBot.create(:game)
-      king = game.pieces.find_by(color: "black", type: "King")
-      knight = game.pieces.find_by(color: "white", x_space: 6, y_space: 7, type: "Knight")
-      knight.update_piece_location(6,1)
+      black_king = game.pieces.kings.find_by(color: "black", type: "King")
+      black_king.update_piece_location(4,0)
 
-      expect(knight.valid_move?(4,0)).to be(true)
+      white_knight = game.pieces.where(color: "white", type: "Knight")
+      white_knight_ONE = white_knight[0]
+      white_knight_ONE.update(x_space: 2, y_space:1)
+      
+      expect(white_knight_ONE.valid_move?(4,0)).to be(true)
+    end
+
+    it "should return true if black king in check by white queen" do
+      game = FactoryBot.create(:game)
+      white_queen = game.pieces.find_by(color: "white", type: "Queen")
+      white_queen.update(x_space: 0, y_space: 4)
+
+      black_king = game.pieces.find_by(color: "black", type: "King")
+      black_king.update(x_space: 0, y_space: 7)
+   
+      expect(white_queen.valid_move?(0,7)).to be(true)
+    end
+
+    it "should return true if black king in check by white bishop" do
+      game = FactoryBot.create(:game)
+      black_king = game.pieces.find_by(color: "black", type: "King")
+      black_king.update(x_space: 4, y_space: 7)
+
+      white_bishop = game.pieces.where(color: "white", type: "Bishop")
+      white_bishop_ONE = white_bishop[0]
+      white_bishop_ONE.update(x_space: 1, y_space:4) 
+
+      expect(white_bishop_ONE.valid_move?(4,7)).to be(true)
     end
   end
 end
