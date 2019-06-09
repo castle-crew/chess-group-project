@@ -1,6 +1,6 @@
 class Game < ApplicationRecord
  has_many :players
- has_many :users
+ belongs_to :user
  has_many :pieces
 
   scope :available, -> { where('(white_player IS NULL AND black_player IS NOT NULL) OR (black_player IS NULL AND white_player IS NOT NULL)') }

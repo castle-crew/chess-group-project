@@ -1,20 +1,17 @@
 class GamesController < ApplicationController
   before_action :authenticate_user!, only: [:new, :create, :update, :show, :index, :forfeit]
 
-  def new
-    @game = Game.new
-  end
-
   def index
     @games = Game.all
   end
 
+  def new
+    @game = Game.new
+  end
+
   def create
     @game = current_user.games.create(game_params)
-
-    if @game.valid?
-      redirect_to game_path(@game)
-    end
+      redirect_to game_path
   end
 
   def show
@@ -73,7 +70,7 @@ class GamesController < ApplicationController
   private
 
   def game_params
-    params.require(:game).permit(:id, :white_player, :black_player, :winner, :loser)
+    params.require(:game).permit(:white_player)
   end
 end
 
