@@ -1,32 +1,38 @@
 class GamesController < ApplicationController
-  before_action :authenticate_user!
+  before_action :authenticate_user!, only: [:new, :create, :update, :show, :index]
 
   def new
     @game = Game.new
-    after_create :populate_board!
-    # after_create :populate_board!
+  end
+
+  def index
+    @games = Game.all
   end
 
   def create
-    @game.create(game_params)
-    redirect_to game_path(:game_id)
+    @game = current_user.games.create(game_params)
+
+    if @game.valid?
+      redirect_to game_path(@game)
+    end
   end
 
   def show
-    @game = Game.find(params[:game_id])
+    @game = Game.find_by_id(params[:id])
+  end
 
-    if @user.valid?
-      redirect_to game_path
-    else
-      redirect_to new_user_session_path
+  def update
+    @game = Game.find_by_id(params[:id])
+
+    if current_user && @game.black_player == nil
+      @game.update_attribute(:black_player, current_user.id)
     end
-
   end
 
   private
 
   def game_params
-    params.require(:game).permit(:game_id, :white_player, :black_player, :winner)
+    params.require(:game).permit(:id, :white_player, :black_player, :winner)
   end
 end
 

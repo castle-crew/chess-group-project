@@ -1,18 +1,20 @@
 class Pawn < Piece
 
-<<<<<<< HEAD
-<<<<<<< HEAD
-=======
-=======
->>>>>>> 4839d5c3ea1ef9d170443bbf22da7b55b34fce71
   def valid_move?(x, y)
+    #En Passant Move 
+    if (y_space == 4 && y_space + 1 == y && x_space + 1 == x && color == "black") ||
+       (y_space == 4 && y_space + 1 == y && x_space - 1 == x && color == "black") ||
+       (y_space == 3 && y_space - 1 == y && x_space + 1 == x && color == "white") ||
+       (y_space == 3 && y_space - 1 == y && x_space - 1 == x && color == "white")
+       return true
+       
     if x != x_space
       return false
     end
-    if y_space + 1 = y 
+    if y_space + 1 == y 
       return true
     end
-    if y_space + 2 = y 
+    if y_space + 2 == y 
       if (y_space == 1 && color == "black") or (y_space == 6 && color == "white") 
         return true
       end
@@ -20,9 +22,4 @@ class Pawn < Piece
 
     return false
   end
-
-<<<<<<< HEAD
->>>>>>> 4839d5c3ea1ef9d170443bbf22da7b55b34fce71
-=======
->>>>>>> 4839d5c3ea1ef9d170443bbf22da7b55b34fce71
 end
