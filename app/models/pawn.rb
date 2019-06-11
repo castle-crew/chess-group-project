@@ -22,4 +22,9 @@ class Pawn < Piece
 
     return false
   end
+<<<<<<< HEAD
 end
+=======
+  
+end
+>>>>>>> fc93c4176ebfbc21495fea944fa9eaef778fe98f
