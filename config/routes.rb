@@ -3,7 +3,7 @@ Rails.application.routes.draw do
   root 'static_pages#index'
    resources :games  
     patch 'forfeit', to: 'games#forfeit', as: :forfeit
-  # resources :games, only: [:new, :index, :create, :show, :update, :forfeit]
+  resources :games, only: [:new, :index, :create, :show, :update, :forfeit]
   resources :pieces, only: :update
   resources :boards, only: [:create, :show]
   resources :forfeit, only: :create
