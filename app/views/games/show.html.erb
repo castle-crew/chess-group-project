@@ -1,270 +1,335 @@
 
+
+
 <h1> Placeholder for game#show view </h1>
 
 <%= link_to 'Click to Join this Game', game_path(@game), :method=> :put %>
 
-
-<!--I think Donny had a fix for this, so we can add it later. -Kazia -->
-
-  <div class="container">
-      <div class="chess-board">
-      <div class="row topline"></div>
-      <div class="row">
-        <div class="rank-8">
-          <div class="file-a white ">
+<div class="container">
+  <div class="topline"></div>
+  <div class="row">
+    <div class="chessboard">
+      <div class="rank-8">
+        <div class="white">
+          <div class="a8 draggable">
             <%= image_tag "wR.png" %>
-            a8
           </div>
-          <div class="file-b black">
+        </div>
+        <div class="black">
+          <div class="b8 draggable">  
             <%= image_tag "wN.png" %>
-            b8
           </div>
-          <div class="file-c white">
+        </div>
+        <div class=" white">
+          <div class="c8 draggable">
             <%= image_tag "wB.png" %>
-            c8
           </div>
-          <div class="file-d black">
+        </div>
+        <div class=" black">
+          <div class="d8 draggable">
             <%= image_tag "wQ.png" %>
-            d8
           </div>
-          <div class="file-e white">
+        </div>
+        <div class=" white">
+          <div class="e8 draggable">
             <%= image_tag "wK.png" %> 
-            e8
           </div>
-          <div class="file-f black">
+        </div>
+        <div class=" black">
+          <div class="f8 draggable">
             <%= image_tag "wB2.png" %>
-            f8
           </div>
-          <div class="file-g white">
+        </div>
+        <div class=" white">
+          <div class="g8 draggable">
             <%= image_tag "wN2.png" %>
-            g8
           </div>
-          <div class="file-h black">
+        </div>
+        <div class=" black">
+          <div class="h8 draggable">
             <%= image_tag "wR2.png" %>
-            h8
           </div>
         </div>
       </div>
-      <div class="row">
-        <div class="rank-7">
-          <div class="file-a black">
+    </div>
+    <div class="row">
+      <div class="rank-7">
+        <div class="black">
+          <div class="a7 draggable">
             <%= image_tag "wP.png" %>
-            a7
           </div>
-          <div class="file-b white">
-            <%= image_tag "wP2.png" %>
-            b7
+        </div>
+        <div class="white">
+          <div class="b7 draggable">
+            <%= image_tag "wP.png" %>
           </div>
-          <div class="file-c black">
-            <%= image_tag "wP" %>
-            c7
+        </div>
+        <div class=" black">
+          <div class="c7 draggable">
+            <%= image_tag "wP.png" %>
           </div>
-          <div class="file-d white">
-            <%= image_tag "wP" %>
-            d7
+        <div class=" white">
+          <div class="d7 draggable">
+            <%= image_tag "wP.png" %>
           </div>
-          <div class="file-e black">
-            <%= image_tag "wP" %>
-            e7
+        </div>
+        <div class=" black">
+          <div class="e7 draggable">
+            <%= image_tag "wP.png" %>
           </div>
-          <div class="file-f white">
-            <%= image_tag "wP" %>
-            f7
+        </div>
+        <div class=" white">
+          <div class="f7 draggable">
+            <%= image_tag "wP.png" %>
           </div>
-          <div class="file-g black">
-            <%= image_tag "wP" %>
-            g7
+        </div>
+        <div class=" black">
+          <div class="g7 draggable">
+            <%= image_tag "wP.png" %>
           </div>
-          <div class="file-h white">
-            <%= image_tag "wP" %>
-            h7
+        </div>
+        <div class=" white">
+          <div class="h7 draggable">
+            <%= image_tag "wP.png" %>
           </div>
         </div>
       </div>
+    </div>
     <div class="row">
       <div class="rank-6">
-        <div class="file-a white">
-          a6
+        <div class="white">
+          <div class="a6 draggable">
+          </div>
+        </div>  
+        <div class="black">
+          <div class="b6 draggable">
+          </div>
         </div>
-        <div class="file-b black">
-          b6
+        <div class=" white">
+          <div class="c6 draggable">
+          </div>
         </div>
-        <div class="file-c white">
-          c6
+        <div class=" black">
+          <div class="d6 draggable">
+          </div>
         </div>
-        <div class="file-d black">
-          d6
+        <div class=" white">
+          <div class="e6 draggable">
+          </div>
         </div>
-        <div class="file-e white">
-          e6
+        <div class=" black">
+          <div class="f6 draggable">
+          </div>
         </div>
-        <div class="file-f black">
-          f6
+        <div class=" white">
+          <div class="g6 draggable">
+          </div>
         </div>
-        <div class="file-g white">
-          g6
-        </div>
-        <div class="file-h black">
-          h6
+        <div class=" black">
+          <div class="h6 draggable">
+          </div>
         </div>
       </div>
     </div>
     <div class="row">
       <div class="rank-5">
-        <div class="file-a black">
-          a5
+        <div class="black">
+          <div class="a5 draggable">
+          </div>
         </div>
-        <div class="file-b white">
-          b5
+        <div class="white">
+          <div class="b5 draggable">
+          </div>
         </div>
-        <div class="file-c black">
-          c5
+        <div class=" black">
+          <div class="c5 draggable">
+          </div>
         </div>
-        <div class="file-d white">
-          d5
+        <div class=" white">
+          <div class="d5 draggable">
+          </div>
+          </div>
+        <div class=" black">
+          <div class="e5 draggable">
+          </div>
         </div>
-        <div class="file-e black">
-          e5
+        <div class=" white">
+          <div class="f5 draggable">
+          </div>
         </div>
-        <div class="file-f white">
-          f5
+        <div class=" black">
+          <div class="g5 draggable">
+          </div>
         </div>
-        <div class="file-g black">
-          g5
-        </div>
-        <div class="file-h white">
-          h5
+        <div class=" white">
+          <div class="h5 draggable">
+          </div>
         </div>
       </div>
     </div>
     <div class="row">
       <div class="rank-4">
-        <div class="file-a white">
-          a4
+        <div class="white">
+          <div class="a4 draggable">
+          </div>
         </div>
-        <div class="file-b black ">
-          b4
+        <div class="black">
+          <div class="b4 draggable">
+          </div>
         </div>
-        <div class="file-c white">
-          c4
+        <div class=" white">
+          <div class="c4 draggable">
+          </div>
         </div>
-        <div class="file-d black">
-          d4
+        <div class=" black">
+          <div class="d4 draggable">
+          </div>
         </div>
-        <div class="file-e white">
-          e4
+        <div class=" white">
+          <div class="e4 draggable">
+          </div>
         </div>
-        <div class="file-f black">
-          f4
+        <div class=" black">
+          <div class="f4 draggable">
+          </div>
         </div>
-        <div class="file-g white">
-          g4
+        <div class=" white">
+          <div class="g4 draggable">
+          </div>
         </div>
-        <div class="file-h black">
-          h4
+        <div class=" black">
+          <div class="h4 draggable">
+          </div>
         </div>
       </div>
     </div>
     <div class="row">
       <div class="rank-3">
-        <div class="file-a black">
-          a3
+        <div class="black">
+          <div class="a3 draggable">
+          </div>
         </div>
-        <div class="file-b white">
-          b3
+        <div class="white">
+          <div class="b3 draggable">
+          </div>
         </div>
-        <div class="file-c black">
-          c3
+        <div class=" black">
+          <div class="c3 draggable">
+          </div>
         </div>
-        <div class="file-d white">
-          d3
+        <div class=" white">
+          <div class="d3 draggable">
+          </div>
         </div>
-        <div class="file-e black">
-          e3
+        <div class=" black">
+          <div class="e3 draggable">
+          </div>
         </div>
-        <div class="file-f white">
-          f3
+        <div class=" white">
+          <div class="f3 draggable">
+          </div>
         </div>
-        <div class="file-g black">
-          g3
+        <div class=" black">
+          <div class="g3 draggable">
+          </div>
         </div>
-        <div class="file-h white">
-          h3
+        <div class=" white">
+          <div class="h3 draggable">
+          </div>
         </div>
       </div>
     </div>
     <div class="row">
       <div class="rank-2">
-        <div class="file-a white">
-          <%= image_tag "bP.png" %>
-          a2
+        <div class="white">
+          <div class="a2 draggable">
+            <%= image_tag "bP.png" %>
+          </div>
         </div>
-        <div class="file-b black">
-          <%= image_tag "bP.png" %>
-          b2
+        <div class="black">
+          <div class="b2 draggable">
+            <%= image_tag "bP.png" %>
+          </div>
         </div>
-        <div class="file-c white">
-          <%= image_tag "bP.png" %>
-          c2
+        <div class=" white">
+          <div class="c2 draggable">
+            <%= image_tag "bP.png" %>
+            </div>
         </div>
-        <div class="file-d black">
-          <%= image_tag "bP.png" %>
-          d2
+        <div class=" black">
+          <div class="d2 draggable">
+            <%= image_tag "bP.png" %>
+          </div>
         </div>
-        <div class="file-e white">
-          <%= image_tag "bP.png" %>
-          e2
+        <div class=" white">
+          <div class="e2 draggable">
+            <%= image_tag "bP.png" %>
+            </div>
         </div>
-        <div class="file-f black">
-          <%= image_tag "bP.png" %>
-          f2
+        <div class=" black">
+          <div class="f2 draggable">
+            <%= image_tag "bP.png"%>
+          </div>
         </div>
-        <div class="file-g white">
-          <%= image_tag "bP.png" %>
-          g2
+        <div class=" white">
+          <div class="g2 draggable">
+            <%= image_tag "bP.png" %>
+            </div>
         </div>
-        <div class="file-h black">
-          <%= image_tag "bP.png" %>
-          h2
+        <div class=" black">
+          <div class="h2 draggable">
+            <%= image_tag "bP.png" %>
+          </div>
         </div>
       </div>
     </div>
     <div class="row">
       <div class="rank-1">
-          <div class="file-a black">
+        <div class="black">
+          <div class="a1 draggable">
             <%= image_tag "bR.png" %>
           </div>
-          <div class="file-b white">
-            <%= image_tag "bN.png" %>
+        </div>
+        <div class="white">
+          <div class="b1 draggable">
+            <%= image_tag "bN.png"%>
           </div>
-          <div class="file-c black">
-            <%= image_tag "bB.png" %>
-            c1
+        </div>
+        <div class=" black">
+          <div class="c1 draggable">
+            <%= image_tag "bB.png"%>
           </div>
-          <div class="file-d white">
-            <%= image_tag "bQ.png" %>
-            d1
+        </div>
+        <div class=" white">
+          <div class="d1 draggable">
+            <%= image_tag "bQ.png"%>
           </div>
-          <div class="file-e black">
-            <%= image_tag "bK.png" %>
-            e1
+        </div>
+        <div class=" black">
+          <div class="e1 draggable">
+            <%= image_tag "bK.png"%>
           </div>
-          <div class="file-f white">
-            <%= image_tag "bB.png" %>
-            f1
+        </div>
+        <div class=" white">
+          <div class="f1 draggable">
+            <%= image_tag "bB.png"%>
           </div>
-          <div class="file-g black">
-            <%= image_tag "bN.png" %>
-            g1
+        </div>
+        <div class=" black">
+          <div class="g1 draggable">
+            <%= image_tag "bN.png"%>
           </div>
-          <div class="file-h white">
-            <%= image_tag "bR.png" %>
-            h1
+        </div>
+        <div class=" white">
+          <div class="h1 draggable">
+            <%= image_tag "bR.png"%>
           </div>      
+        </div>
       </div>
     </div>
   </div>
 </div>
+
 <div class="col-xs-6 col-sm-6">
   <%= form_for @game, url: {action: "forfeit"} do |f| %>
  <%= f.hidden_field :white_player %>
@@ -277,7 +342,37 @@
 <script>
   $('#myModal').on('shown.bs.modal', function () {
   $('#myInput').trigger('focus')
-})
+});
+
+const position = { x: 0, y: 0 }
+
+interact('.draggable').draggable({
+  listeners: {
+    start (event) {
+      console.log(event.type, event.target)
+    },
+    move (event) {
+      position.x += event.dx
+      position.y += event.dy
+
+      event.target.style.transform =
+        `translate(${position.x}px, ${position.y}px)`
+    },
+  }
+});
+
+interact('.dropzone')
+  .dropzone({
+    ondrop: function (event) {
+      alert(event.relatedTarget.id
+            + ' was dropped into '
+            + event.target.id)
+    }
+  })
+  .on('dropactivate', function (event) {
+    event.target.classList.add('drop-activated')
+  });
+
 </script>
   
 
