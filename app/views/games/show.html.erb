@@ -12,35 +12,35 @@
       <div class="row">
         <div class="rank-8">
           <div class="file-a white">
-            <%= image_tag "wR.png" %>
+            <%= image_tag "wR.png", draggable: 'true' %>
             a8
           </div>
           <div class="file-b black">
-            <%= image_tag "wN.png" %>
+            <%= image_tag "wN.png", draggable: 'true' %>
             b8
           </div>
           <div class="file-c white">
-            <%= image_tag "wB.png" %>
+            <%= image_tag "wB.png", draggable: 'true' %>
             c8
           </div>
           <div class="file-d black">
-            <%= image_tag "wK.png" %>
+            <%= image_tag "wK.png", draggable: 'true' %>
             d8
           </div>
           <div class="file-e white">
-            <%= image_tag "wQ.png" %>
+            <%= image_tag "wQ.png", draggable: 'true' %>
             e8
           </div>
           <div class="file-f black">
-            <%= image_tag "wB2.png" %>
+            <%= image_tag "wB2.png", draggable: 'true' %>
             f8
           </div>
           <div class="file-g white">
-            <%= image_tag "wN2.png" %>
+            <%= image_tag "wN2.png", draggable: 'true' %>
             g8
           </div>
           <div class="file-h black">
-            <%= image_tag "wR2.png" %>
+            <%= image_tag "wR2.png", draggable: 'true' %>
             h8
           </div>
         </div>
@@ -48,35 +48,35 @@
       <div class="row">
         <div class="rank-7">
           <div class="file-a black">
-            <%= image_tag "wP.png" %>
+            <%= image_tag "wP.png", draggable: 'true' %>
             a7
           </div>
           <div class="file-b white">
-            <%= image_tag "wP2.png" %>
+            <%= image_tag "wP2.png", draggable: 'true' %>
             b7
           </div>
           <div class="file-c black">
-            <%= image_tag "wP" %>
+            <%= image_tag "wP", draggable: 'true' %>
             c7
           </div>
           <div class="file-d white">
-            <%= image_tag "wP" %>
+            <%= image_tag "wP", draggable: 'true' %>
             d7
           </div>
           <div class="file-e black">
-            <%= image_tag "wP" %>
+            <%= image_tag "wP", draggable: 'true' %>
             e7
           </div>
           <div class="file-f white">
-            <%= image_tag "wP" %>
+            <%= image_tag "wP", draggable: 'true' %>
             f7
           </div>
           <div class="file-g black">
-            <%= image_tag "wP" %>
+            <%= image_tag "wP", draggable: 'true' %>
             g7
           </div>
           <div class="file-h white">
-            <%= image_tag "wP" %>
+            <%= image_tag "wP", draggable: 'true' %>
             h7
           </div>
         </div>
@@ -273,6 +273,142 @@
  <%= f.submit 'Forfeit Game', :class =>'btn btn-danger' %>
 <% end %>
 </div>
+
+
+
+<!-- Button trigger modal -->
+<button type="button" id='promo-modal-button' class="btn btn-primary" data-toggle="modal" data-target="#promoModal">
+  Pawn Promotion
+</button>
+
+<!-- Modal -->
+<div class="modal fade" id="promoModal" tabindex="-1" role="dialog" aria-labelledby="promoModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="promoModalLabel">Pawn Promotion</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        Click on any piece of your preference to promote your pawn
+      </div>
+      <div class="modal-footer">
+    <!-- <button onclick="myFunction()">Queen</button>
+    <p id="queenbutton"></p> -->
+    <button id="queenbutton" data-promote='queen' type="button" class="btn btn-primary">Queen</button> 
+    <button id="knightbutton" data-promote='knight' type="button" class="btn btn-primary">Knight</button>
+    <button id="rookbutton" data-promote='rook' type="button" class="btn btn-primary">Rook</button>
+    <button id="bishopbutton" data-promote='bishop' type="button" class="btn btn-primary">Bishop</button>
+      
+       
+      </div>
+    </div>
+  </div>
+</div>
+
+<script type="text/javascript">
+  $("#promo-modal-button").on('click', function () {
+    $('#promoModal').modal('show');
+  });
+
+  $("#queenbutton, #knightbutton, #rookbutton, #bishopbutton").on('click', function () {
+    // here, do an ajax request that sends over the piece (pawn) and that it should be changed to a queen,
+    // Not real code following
+    var promote_to = $(this).attr('data-promote');
+    // Some way to know if player is white or black.
+    // Assume white for now.
+    var playerColor = 'white';
+    var imgSrc = ''
+    if (playerColor === 'white') {
+      if (promote_to === 'rook') {
+        imgSrc = "<%= asset_path 'wR.png' %>";       
+      } 
+        else if (promote_to === 'knight') {
+        imgSrc = "<%= asset_path 'wN.png' %>";
+      } else if (promote_to === 'bishop') {
+        imgSrc = "<%= asset_path 'wB.png' %>";
+      } else if (promote_to === 'queen') {
+        imgSrc = "<%= asset_path 'wQ.png' %>";
+      }
+    } else {
+      // Switch to black color img srcs.
+      // change image paths too like above.
+      if (promote_to === 'rook') {
+        imgSrc = "<%= asset_path 'bR.png' %>"; // Probably need the rails file path here.
+      } else if (promote_to === 'knight') {
+        imgSrc = "<%= asset_path 'bN.png' %>";
+      } else if (promote_to === 'bishop') {
+        imgSrc = "<%= asset_path 'bB.png' %>";
+      } else if (promote_to === 'queen') {
+        imgSrc = "<%= asset_path' bQ.png' %>";
+      }
+    }
+      debugger;
+    $.ajax({
+      method: 'post',
+      url: "/promote",
+      data: {
+        // What is the pawn.
+
+        pawn: 0,
+        promoto_to: promote_to
+      }
+    }).done(function (resp) {
+      // server should say if pieces are white or black.
+      // Find the pawn location and change its html, meaning its image to whatever they requested.
+      $("#h2").html("<img src='" + imgSrc + "' />");
+
+      $("#promoModal").modal('hide');
+
+    }).fail(function (err) {
+        console.error(err);
+        alert("An error l occurred")
+    }); 
+  })
+
+// $("#promoModal").on("shown.bs.modal", function () { 
+//     alert('Hi');
+// }).modal('show');
+
+  // function myFunction() {
+  //   var pawn = Pawn.piece ;
+  //   var queen =Queen.piece ;
+  //   if(Pawn.present? && (y_space == 7 && color == "black"));
+  // $("p") removeClass("pawn").addClass("piece")
+  // else if(Pawn.present? && (y_space == 0 && color == "white"));
+  // return true;
+  //   };
+  // else {
+  // return false; 
+  //   }
+  //  }
+// function pawnPromotion (Pawn) {  
+// var pawn = Pawn 
+//   if(Pawn.present? && (y_space == 7 && color == "black"));
+//   return true;
+//   else if(Pawn.present? && (y_space == 0 && color == "white"));
+//   return true;
+//     };
+//   else {
+//   return false; 
+//     }
+
+
+//     function updatePiece (Pawn)
+//      var pawn = Pawn.piece  
+//      var queen = Queen.piece
+//      var knight = Knight.piece
+//      var rook = Rook.piece
+//     if (onclick ("#queenbutton").removeClass("pawn").addClass("queen"));
+//     else if (onclick("#knightbutton").removeClass('pawn').addClass('knight'));
+//     else if (onclick("#rookbutton").removeClass('pawn').addClass('rook'));
+//     else if (onclick("#bishopbutton").removeClass('pawn').addClass('bishop'));
+//     else
+//       return "invalid"
+
+</script>
 
 
 

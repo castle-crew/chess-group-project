@@ -27,12 +27,9 @@ class GamesController < ApplicationController
     if current_user && @game.black_player == nil
       @game.update_attribute(:black_player, current_user.id)
     end
-
-
   end
 
   def forfeit
-
     @game = Game.find_by_id(game_params[:id])
     
     unless @game
@@ -67,8 +64,14 @@ class GamesController < ApplicationController
       end
     end 
     redirect_to root_path
-  
+
+   end
+
   end
+   
+
+
+ 
 
   private
 
