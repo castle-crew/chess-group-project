@@ -343,35 +343,14 @@
   $('#myInput').trigger('focus')
 });
 
-const position = { x: 0, y: 0 }
-
-interact('.draggable').draggable({
-  listeners: {
-    start (event) {
-      console.log(event.type, event.target)
-    },
-    move (event) {
-      position.x += event.dx
-      position.y += event.dy
-
-      event.target.style.transform =
-        `translate(${position.x}px, ${position.y}px)`
-    },
-  }
-});
-
-interact('.dropzone')
-  .dropzone({
-    ondrop: function (event) {
-      alert(event.relatedTarget.id
-            + ' was dropped into '
-            + event.target.id)
-    }
-  })
-  .on('dropactivate', function (event) {
-    event.target.classList.add('drop-activated')
-  });
-
+<link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+    <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+    <script>
+    $( function() {
+      $( "#draggable" ).draggable();
+    } );
+    </script>
 </script>
   
 
