@@ -1,6 +1,14 @@
 class Pawn < Piece
 
   def valid_move?(x, y)
+    #En Passant 
+    if (y_space == 4 && y_space + 1 == y && x_space + 1 == x && color == "black") ||
+       (y_space == 4 && y_space + 1 == y && x_space - 1 == x && color == "black") ||
+       (y_space == 3 && y_space - 1 == y && x_space + 1 == x && color == "white") ||
+       (y_space == 3 && y_space - 1 == y && x_space - 1 == x && color == "white")
+
+       return true
+       
     if x != x_space
       return false
     end
