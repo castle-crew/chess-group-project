@@ -3,7 +3,7 @@ class Game < ApplicationRecord
  has_many :users
  has_many :pieces
 
-  scope :available, -> { where('(white_player IS NULL AND black_player IS NOT NULL) OR (black_player IS NULL AND white_player IS NOT NULL)') }
+  # scope :available, -> { where('(white_player IS NULL AND black_player IS NOT NULL) OR (black_player IS NULL AND white_player IS NOT NULL)') }
   after_create :populate_board!
 
    def populate_board!
@@ -41,20 +41,21 @@ class Game < ApplicationRecord
    end
 
   def check?(color)
-    black_king = game.pieces.find_by(color: "black", type: "King")
-    white_king = game.pieces.find_by(color: "white", type: "King")
+    black_king = Piece.find_by(color: "black", type: "King")
+    white_king = Piece.find_by(color: "white", type: "King")
     
-    black_piece = game.pieces.where(color: "black")
-    white_piece = game.pieces.where(color: "white")
+    black_piece = Piece.where(color: "black")
+    white_piece = Piece.where(color: "white")
+    white_pawn = Piece.where(color: "white", type: "Pawn")
 
-    if color == "white"
-      white_piece.each do |piece|
-        if white_piece.pawns.valid_move?(black_king.x_space, black_king.y_space)||
-         white_piece.queens.valid_move?(black_king.x_space, black_king.y_space) ||
-         white_piece.rooks.valid_move?(black_king.x_space, black_king.y_space) ||
-         white_piece.knights.valid_move?(black_king.x_space, black_king.y_space) ||
-         white_piece.bishops.valid_move?(black_king.x_space, black_king.y_space) ||
-         white_piece.kings.valid_move?(black_king.x_space, black_king.y_space)
+   if color == "white"
+      white_pawn.each do |piece|
+        if white_pawn.valid_move?(black_king.x_space, black_king.y_space)
+         # white_piece.queens.valid_move?(black_king.x_space, black_king.y_space) ||
+         # white_piece.rooks.valid_move?(black_king.x_space, black_king.y_space) ||
+         # white_piece.knights.valid_move?(black_king.x_space, black_king.y_space) ||
+         # white_piece.bishops.valid_move?(black_king.x_space, black_king.y_space) ||
+         # white_piece.kings.valid_move?(black_king.x_space, black_king.y_space)
           return true
         else
           return false

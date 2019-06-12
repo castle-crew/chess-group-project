@@ -48,8 +48,8 @@ RSpec.describe Game, type: :model do
       expect(pawn_one.game_id).to eq(game.id)
       expect(pawn_four.game_id).to eq(game.id)
       expect(pawn_eleven.game_id).to eq(game.id)
-
     end
+
     it "should return true if white king in check by black bishop" do
       game = FactoryBot.create(:game)
       white_king = game.pieces.find_by(color: "white", type: "King")
@@ -107,6 +107,7 @@ RSpec.describe Game, type: :model do
       white_bishop_ONE.update(x_space: 1, y_space:4) 
 
       expect(white_bishop_ONE.valid_move?(4,7)).to be(true)
+
     end
   end
 end

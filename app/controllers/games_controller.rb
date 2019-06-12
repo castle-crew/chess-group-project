@@ -2,7 +2,7 @@ class GamesController < ApplicationController
   before_action :authenticate_user!, only: [:new, :create, :update, :show, :index, :forfeit]
 
   def new
-    @game = Game.new
+    game = Game.new
   end
 
   def index
@@ -10,30 +10,28 @@ class GamesController < ApplicationController
   end
 
   def create
-    @game = current_user.games.create(game_params)
+    game = current_user.games.create(game_params)
 
-    if @game.valid?
-      redirect_to game_path(@game)
+    if game.valid?
+      redirect_to game_path(game)
     end
   end
 
   def show
-    @game = Game.find_by_id(params[:id])
+    game = Game.find_by_id(params[:id])
   end
 
   def update
-    @game = Game.find_by_id(params[:id])
+    game = Game.find_by_id(params[:id])
 
-    if current_user && @game.black_player == nil
-      @game.update_attribute(:black_player, current_user.id)
+    if current_user && game.black_player == nil
+      game.update_attribute(:black_player, current_user.id)
     end
-
-
   end
 
   def forfeit
 
-    @game = Game.find_by_id(game_params[:id])
+    @game = Game.find_by_id(params[:id])
     
     unless @game
       return "A horrible error has occurred of which we cannot recover!"
@@ -68,6 +66,18 @@ class GamesController < ApplicationController
     end 
     redirect_to root_path
   
+  end
+
+  def check
+    game = Game.find_by(id: id)
+    if game.check?("white") == true
+      flash[:notice] = "Careful . . . your king is in check"
+      redirect_to game
+    end
+    if game.check?("black") == true
+      flash[:notice] = "Careful . . . your king is in check"
+      redirect_to game
+    end
   end
 
   private

@@ -6,12 +6,12 @@ class Piece < ApplicationRecord
     %w(King Knight Pawn Queen Rook Bishop)
   end
 
-  scope :kings, -> { where(type: 'King') }
-  scope :knights, -> { where(type: 'Knight') }
-  scope :queens, -> { where(type: 'Queen') }
-  scope :rooks, -> { where(type: 'Rook') }
-  scope :pawns, -> { where(type: 'Pawn') }
-  scope :bishops, -> { where(type: 'Bishop') }
+  scope :kings, -> { where(type: "King") }
+  scope :knights, -> { where(type: "Knight") }
+  scope :queens, -> { where(type: "Queen") }
+  scope :rooks, -> { where(type: "Rook") }
+  scope :pawns, -> { where(type: "Pawn") }
+  scope :bishops, -> { where(type: "Bishop") }
   
   def move_to!(x, y)
     return false unless valid_move?(x, y)

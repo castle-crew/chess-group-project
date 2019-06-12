@@ -17,7 +17,7 @@ FactoryBot.define do
   factory :player do
   end
 
-  factory :king do
+  factory :king, class: Piece do
     factory :white_king do
       color {"white"}
     end
@@ -27,7 +27,7 @@ FactoryBot.define do
     end
   end
 
-  factory :queen do
+  factory :queen, class: Piece do
     factory :white_queen do
       color {"white"}
     end
@@ -37,17 +37,17 @@ FactoryBot.define do
     end
   end
 
-  factory :rook do
+  factory :rook, class: Piece do
     factory :white_rook do
       color {"white"}
     end
 
-    factory :black_rook do  
+    factory :black_rook, class: Piece do  
       color {"black"}
     end
   end
 
-  factory :bishop do
+  factory :bishop, class: Piece do
     factory :white_bishop do
       color {"white"}
       sequence :id do |n|
@@ -63,7 +63,7 @@ FactoryBot.define do
     end
   end
 
-  factory :pawn do
+  factory :pawn, class: Piece do
     factory :white_pawn do
       color {"white"}
     end
@@ -73,7 +73,7 @@ FactoryBot.define do
     end
   end
 
-  factory :knight do
+  factory :knight, class: Piece do
     factory :white_knight do
       color {"white"}
     end
@@ -83,4 +83,6 @@ FactoryBot.define do
     end
   end
 end
+
+
 
